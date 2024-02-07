@@ -43,9 +43,42 @@ Ubuntu 23 比较好看, 所以接下来我准备下载 23. 你也可以选择下
 **情况 1**: 你的电脑只有一个磁盘 (这里磁盘我们讲的是 SSD, 如果你的第二磁盘是机械硬盘就比较复杂...要自己挂载不同的分区), 我们就把 Ubuntu 和 Windows 都装在你的 C 盘里;  
 **情况 2**: 你的电脑有两个 (多个) 磁盘, 我们就一个磁盘装一个操作系统.
 
-关于如何看自己有多少磁盘:
+### 4.1. 看自己有多少磁盘
 
 <img src="imgs/disk_manager.png"></img>
+
+### 4.2. 看自己的内存大小
+
+<img src="imgs/check_ram.png"></img>
+
+可以看到我的电脑 RAM 是 16 GB.
+
+### 4.3. 如果有多磁盘, 把准备装 Linux 的磁盘格式化
+
+Win + R 打开 Run.
+
+输入 "Diskpart".
+
+输入命令:
+
+```bash
+list disk
+```
+
+找到额外的磁盘, 比如我希望把 Linux 安装在 Disk 1 中, 就执行下面两条命令把 Disk 1 释放掉:
+
+```bash
+select disk 1
+clean
+```
+
+<img src="imgs/clean_disk.png"></img>
+
+**注意: 不要释放掉安装了 Windows 的磁盘.**
+
+### 4.4. 开始安装 Linux
+
+接着开始正式装双系统了.
 
 在你的电脑上插好前面制作的启动盘.
 
@@ -53,20 +86,27 @@ Ubuntu 23 比较好看, 所以接下来我准备下载 23. 你也可以选择下
 
 开机, 同时疯狂按 F2 进入 Bios 模式.
 
-然后你需要自己探索如何更改启动选项, 改成启动 USB.
+然后你需要想办法更改启动选项为 USB (也就是刚刚做的启动盘).
 
-**启动时, 如果系统问你选择用什么 boot 模式, 记得选 normal mode 而非 grub2 mode.**
+不同电脑的更改方式不一样, 比如联想的电脑可以参考下图:
 
-举个例子, 联想的电脑能直接改, 可以参考下图:
+<img src="imgs/lenovo_boot.png"></img>
 
-惠普的电脑, 先要选择退出 Diagnostics UEFI, 然后选择启动选项:
+惠普的电脑, 先要选择退出 Hardware Diagnostics UEFI, 然后选择启动选项:
 
 <img src="imgs/hp_boot.png"></img>
 
+**注意: 启动时, 如果系统问你选择用什么 boot 模式, 记得选 normal mode 而非 grub2 mode.**
+
+### 4.5. 情况 1: 只有一个磁盘, 在同一磁盘装双系统
+
 安装参考下面的步骤 (不同版本 Ubuntu 可能顺序不一样, 不过大差不差):
 
-<img src="imgs/install_ubunt_1.png"></img>
+<img src="imgs/install_ubuntu_1.png"></img>
 
+### 4.6. 情况 2: 有多个磁盘, 一个装 Windows 一个装 Linux
 
+安装参考下面的步骤 (不同版本 Ubuntu 可能顺序不一样, 不过大差不差):
 
+<img src="imgs/install_ubuntu_2.png"></img>
 
