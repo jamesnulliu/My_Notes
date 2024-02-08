@@ -9,7 +9,7 @@
 <img src="imgs/reset_windows.png"></img>
 
 
-注意, 在 Step 8, 如果你又多个磁盘, 建议把别的磁盘也给格式化了.
+注意, 在 Step 8, 如果你有多个磁盘, 建议把别的磁盘也给格式化了.
 
 ## 2. 下载 Ubuntu Desktop
 
@@ -110,3 +110,27 @@ clean
 
 <img src="imgs/install_ubuntu_2.png"></img>
 
+# 5. 配置 Linux
+
+## 5.1. 安装 VIM (别告诉我你不会用 VIM)
+
+## 5.2. 安装 Clash for Windows (不会有不翻墙的程序员吧)
+
+
+## 5.3. [可选] 安装 Nvidia 驱动 (需要你的电脑有 N 卡)
+
+如果你电脑没有 N 卡自然跑不了 Pytorch 捏~
+
+本文选择安装了 535 版本的驱动, 目前 (2024/Feb/08) 测试没有 bug. 你可以结合自己的情况试试安装更新的驱动, 不过版本一定要记住, 后面安装 cuda tookit 要用到.
+
+参考下图安装驱动:
+
+<img src="imgs/nvidia_driver.png"></img>
+
+## 5.4. Visual Studio Code
+### 5.4.1. 安装
+### 5.4.2. 配置
+
+## 5.5. 搭建 C++ 开发环境
+
+## 5.6. 搭建 Python 开发环境
