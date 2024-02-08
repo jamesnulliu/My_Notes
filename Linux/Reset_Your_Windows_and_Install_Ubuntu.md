@@ -114,7 +114,7 @@ clean
 
 ## 5.1. 安装 VIM (别告诉我你不会用 VIM)
 
-下载本文同级目录下的 [vimrc]() 文件至 "~".
+下载本文同级目录下的 [vimrc](https://github.com/jamesnulliu/My_Notes/blob/main/Linux/vimrc) 文件至 "~".
 
 ```bash
 sudo apt-get install vim-gtk3
