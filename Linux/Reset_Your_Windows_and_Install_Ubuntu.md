@@ -114,7 +114,23 @@ clean
 
 ## 5.1. 安装 VIM (别告诉我你不会用 VIM)
 
-## 5.2. 安装 Clash for Windows (不会有不翻墙的程序员吧)
+下载本文同级目录下的 [vimrc]() 文件至 "~".
+
+```bash
+sudo apt-get install vim-gtk3
+sudo mv /etc/vim/vimrc /etc/vim/vimrc.bkp
+sudo mv ~/vimrc /etc/vim
+```
+
+## 5.2. 使用 Clash for Windows (不会有不翻墙的程序员吧)
+
+使用 Clash for Windows 需要手动设置 Proxy.
+
+如果关闭了 Clash, 则需要手动关闭 Proxy.
+
+建议一直开着 Clash, 不想翻墙切换成 Direct 模式就行了.
+
+<img src="imgs/proxy.png"></img>
 
 
 ## 5.3. [可选] 安装 Nvidia 驱动 (需要你的电脑有 N 卡)
@@ -129,7 +145,17 @@ clean
 
 ## 5.4. Visual Studio Code
 ### 5.4.1. 安装
+```bash
+sudo snap install code --classic
+```
 ### 5.4.2. 配置
+
+```bash
+mkdir ~/Projects
+cd ~/Projects
+mkdir test
+code test  # Open "test" folder as a project with vscode
+```
 
 ## 5.5. 搭建 C++ 开发环境
 
