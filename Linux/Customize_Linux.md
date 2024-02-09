@@ -41,7 +41,13 @@ vimtutor
 
 安装完后重启一下, 接着我们继续安装 cuda toolkit.
 
-先进入 [Cuda Tookit Archive 官网](https://developer.nvidia.com/cuda-toolkit-archive).
+先安装 Build Essentials, 也就是 gcc, g++, gdb:
+
+```bash
+sudo apt install build-essential
+```
+
+进入 [Cuda Tookit Archive 官网](https://developer.nvidia.com/cuda-toolkit-archive).
 
 然后要注意, 当前最新 (2024/Feb/09) 的 cuda toolkit 是 12.3.2 (January 2024), 点进去选好操作系统 (Linux => x86_64 => Ubuntu => 22.04 => runfile) 后可以看到下载指令如下:
 
@@ -51,9 +57,9 @@ wget https://developer.download.nvidia.com/compute/cuda/12.3.2/local_installers/
 
 **但是我们前面安装的是 535 版本的驱动, 上述指令下载的对应驱动是 545 版本. 因此出现了不匹配的状况.**
 
-因此你在下载时, 需要结合你安装的驱动版本找到最新的与驱动版本匹配的 cuda toolkit. 
+因此你在下载时, **需要结合你安装的驱动版本找到最新的与驱动版本匹配的 cuda toolkit**. 
 
-对于 535 版本的驱动, 最新的匹配 cuda toolkit 应该是 12.2.2 (August 2023).
+对于 535 版本的驱动, 最新的匹配 cuda toolkit 应该是 [12.2.2 (August 2023)](https://developer.nvidia.com/cuda-12-2-2-download-archive?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=22.04&target_type=runfile_local).
 
 点进去后选择操作系统 (虽然我们安装的是 Ubuntu 23, 但是 22.04 的 Cuda Tookit 也能装):
 
@@ -62,11 +68,33 @@ Linux => x86_64 => Ubuntu => 22.04 => runfile(local)
 可以看到跳出下面的两条指令; 第一条是下载 cuda tookit 安装程序, 第二条是安装 cuda tookit:
 
 ```bash
+# [Warning] Following commands are just an example. You should get your command from the offical website: https://developer.nvidia.com/cuda-toolkit-archive
+
+# Download cuda toolkit
 wget https://developer.download.nvidia.com/compute/cuda/12.2.2/local_installers/cuda_12.2.2_535.104.05_linux.run
+# Run installation script
 sudo sh cuda_12.2.2_535.104.05_linux.run
 ```
 
-按
+参考下图的步骤进行 cuda toolkit 的安装 (注意取消安装 Driver):
+
+<img src="imgs/install_cuda_toolkit.png"></img>
+
+安装完后, 根据输出的提示, 利用指令 `sudo vim /etc/bash.bashrc` 在文件的末尾添加以下两行命令 (具体命令要你参考下图根据输出提示改, 不一定和我的一样):
+
+```bash
+export PATH="$PATH:/usr/local/cuda-12.2/bin"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda-12.2/lib64"
+```
+
+<img src="imgs/install_cuda_toolkit_2.png"></img>
+
+安装完后, 把当前终端关闭, 开个新终端, 输入以下指令检查 cuda toolkit 是否安装成功:
+
+```bash
+nvcc -V
+```
+
 
 ## 5.4. Visual Studio Code
 ### 5.4.1. 安装
