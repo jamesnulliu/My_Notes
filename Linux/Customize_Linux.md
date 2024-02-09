@@ -110,6 +110,11 @@ mkdir test
 code test  # Open "test" folder as a project with vscode
 ```
 
+根据下图可以设置字体和大小. 需要注意的是, Ubuntu 不自带 "Cascadia Code" 这个字体; 可以使用其他字体或者手动安装:
+
+<img src="imgs/basic_setting.png"></img>
+
+
 ## 5.5. 搭建 C++ 开发环境
 
 ```bash
@@ -118,5 +123,74 @@ sudo apt install build-essential  # Install gcc-13, g++-13, gdb.
 sudo apt install gcc-11
 sudo apt install g++-11
 ```
+
+安装以下扩展:
+
+- C/C++
+- CMake Tools
+
+**对于每一个 C++ 项目**,  
+先在项目根目录创建文件夹 ".vscode",  
+再在 ".vscode" 中创建两个文件:
+
+- c_cpp_properties.json
+- tasks.json
+
+"c_cpp_prperties.json" 主要是用来设置 IntelliSense 检查的:
+
+```json
+// c_cpp_properties.json
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/include",
+                // Other include path ...
+            ],
+            "defines": [],
+            "cStandard": "c17",
+            "cppStandard": "c++23",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}
+```
+
+"tasks.json" 主要用来设置 vscode 的运行环境; 用指令或者 CMake 来 build 你的项目则可以忽视:
+
+```json
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "C/C++: g++ build active file",
+			"command": "/usr/bin/g++",
+			"args": [
+				"-fdiagnostics-color=always",
+				"-std=c++23",
+				"-g",
+				"-o",
+				"${workspaceFolder}/bin/main.out",
+				"-I",
+				"${workspaceFolder}/include",
+				"$(find ${workspaceFolder}/src/ -type f -name \"*.cpp\")",
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+			"detail": "compiler: /usr/bin/g++", 
+		}
+	]
+}
+```
+
+
 
 ## 5.6. 搭建 Python 开发环境
