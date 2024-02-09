@@ -53,28 +53,34 @@ Ubuntu 23 比较好看, 所以接下来我准备下载 23. 你也可以选择下
 
 可以看到我的电脑 RAM 是 16 GB.
 
-### 4.3. 如果有多磁盘, 把准备装 Linux 的磁盘格式化
+### 4.3. 安装双系统前的准备工作
 
-Win + R 打开 Run.
+#### 4.3.1. 情况 1: 如果只有一个磁盘, 释放 C 盘的一部分空间
 
-输入 "Diskpart".
+看图操作即可.
 
-输入命令:
+如果你的 SSD 明明有很多容量, 但是能够 shrink 的部分很小 (比如 475G 只能 shrink 100G), 强烈建议重装一下 Windows.
 
-```bash
-list disk
-```
+<img src="imgs/shrink_disk.png"></img>
 
-找到额外的磁盘, 比如我希望把 Linux 安装在 Disk 1 中, 就执行下面两条命令把 Disk 1 释放掉:
+#### 4.3.2. 情况 2: 如果有多磁盘, 释放准备装 Linux 的磁盘
 
-```bash
-select disk 1
-clean
-```
+参考下面的图做以下几件事情: 
+
+1. Win + R 打开 Run.
+2. 输入 "Diskpart".
+3. 输入命令:
+    ```bash
+    list disk
+    ```
+    **注意: 不要释放掉安装了 Windows 的磁盘.**
+4. 找到额外的磁盘, 比如我希望把 Linux 安装在 Disk 1 中, 就执行下面两条命令把 Disk 1 释放掉:
+    ```bash
+    select disk 1  # Choose the disk where you want to install Linux.
+    clean  # "Clean" the disk, aka. free and format the disk.
+    ```
 
 <img src="imgs/clean_disk.png"></img>
-
-**注意: 不要释放掉安装了 Windows 的磁盘.**
 
 ### 4.4. 开始安装 Linux
 
@@ -110,53 +116,3 @@ clean
 
 <img src="imgs/install_ubuntu_2.png"></img>
 
-# 5. 配置 Linux
-
-## 5.1. 安装 VIM (别告诉我你不会用 VIM)
-
-下载本文同级目录下的 [vimrc](https://github.com/jamesnulliu/My_Notes/blob/main/Linux/vimrc) 文件至 "~".
-
-```bash
-sudo apt-get install vim-gtk3
-sudo mv /etc/vim/vimrc /etc/vim/vimrc.bkp
-sudo mv ~/vimrc /etc/vim
-```
-
-## 5.2. 使用 Clash for Windows (不会有不翻墙的程序员吧)
-
-使用 Clash for Windows 需要手动设置 Proxy.
-
-如果关闭了 Clash, 则需要手动关闭 Proxy.
-
-建议一直开着 Clash, 不想翻墙切换成 Direct 模式就行了.
-
-<img src="imgs/proxy.png"></img>
-
-
-## 5.3. [可选] 安装 Nvidia 驱动 (需要你的电脑有 N 卡)
-
-如果你电脑没有 N 卡自然跑不了 Pytorch 捏~
-
-本文选择安装了 535 版本的驱动, 目前 (2024/Feb/08) 测试没有 bug. 你可以结合自己的情况试试安装更新的驱动, 不过版本一定要记住, 后面安装 cuda tookit 要用到.
-
-参考下图安装驱动:
-
-<img src="imgs/nvidia_driver.png"></img>
-
-## 5.4. Visual Studio Code
-### 5.4.1. 安装
-```bash
-sudo snap install code --classic
-```
-### 5.4.2. 配置
-
-```bash
-mkdir ~/Projects
-cd ~/Projects
-mkdir test
-code test  # Open "test" folder as a project with vscode
-```
-
-## 5.5. 搭建 C++ 开发环境
-
-## 5.6. 搭建 Python 开发环境
