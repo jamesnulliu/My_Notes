@@ -191,6 +191,39 @@ sudo apt install g++-11
 }
 ```
 
-
-
 ## 5.6. 搭建 Python 开发环境
+
+先安装 miniconda, 进入[官网](https://docs.anaconda.com/free/miniconda/), 直接翻到最底下的 [Quick command line install](https://docs.anaconda.com/free/miniconda/#quick-command-line-install).
+
+选择 Linux; 不出意外的话安装指令应该永远不会变, 所以我直接贴在下面了:
+
+```bash
+mkdir -p ~/miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+rm -rf ~/miniconda3/miniconda.sh
+~/miniconda3/bin/conda init bash
+~/miniconda3/bin/conda init zsh
+```
+
+vscode 中安装下面的扩展:
+
+- Python
+- Jupyter
+- Black Formatter
+
+conda 指令这里就不多赘述了, 这里就记录一下如何设置不自动激活 base 环境:
+
+```bash
+conda config --set auto_activate_base false
+```
+
+**conda 不需要换源; pip 需要换源!!!**
+
+conda 创建了一个环境后, 安装了 python 才会有 pip;  
+pip 换清华园指令:
+
+```bash
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
