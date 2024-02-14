@@ -2,12 +2,6 @@
 
 ## 密码相关事宜
 
-Root 密码: shu2024ajhgf
-
-其他用户的初始密码 shu202401
-
-如果账户有问题, 请咨询 jamesnulliu@outlook.com .
-
 super user 能够直接修改其他用户的密码, 而普通用户只能修改自己的密码;  
 执行以下命令修改密码:
 
