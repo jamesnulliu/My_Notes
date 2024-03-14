@@ -73,9 +73,9 @@ private:
 
 Implicit conversion could be dangerous.
 
-# Term 16: Use the same form in corresponding uses of new and delete.
+## Term 16: Use the same form in corresponding uses of new and delete.
 
-# Term 17: Store new objects in smart pointers in standalone statements.
+## Term 17: Store new objects in smart pointers in standalone statements.
 Suppose there is a function:
 
 ```cpp
