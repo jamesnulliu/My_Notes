@@ -116,3 +116,17 @@ Ubuntu 23 比较好看, 所以接下来我准备下载 23. 你也可以选择下
 
 <img src="imgs/install_ubuntu_2.png"></img>
 
+
+## 5. 修复启动引导
+
+安装完重启 ubuntu, 会进入启动引导界面, 直接选择进入 ubuntu.
+
+进入后 ctrl+alt+t 调出 terminal, 输入以下两条命令:
+
+```bash
+sudo add-apt-repository ppa:yannubuntu/boot-repair && sudo apt update
+
+sudo apt install -y boot-repair && boot-repair
+```
+
+弹出的窗口全选确认, 等待修复完成即可.

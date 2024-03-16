@@ -49,11 +49,7 @@ sudo apt install build-essential
 
 进入 [Cuda Tookit Archive 官网](https://developer.nvidia.com/cuda-toolkit-archive).
 
-然后要注意, 当前最新 (2024/Feb/09) 的 cuda toolkit 是 12.3.2 (January 2024), 点进去选好操作系统 (Linux => x86_64 => Ubuntu => 22.04 => runfile) 后可以看到下载指令如下:
-
-```bash
-wget https://developer.download.nvidia.com/compute/cuda/12.3.2/local_installers/cuda_12.3.2_545.23.08_linux.run
-```
+然后要注意, 当前最新 (2024/Feb/09) 的 cuda toolkit 是 12.3.2 (January 2024), 点进去选好操作系统 (Linux => x86_64 => Ubuntu => 22.04 => runfile) 后可以看到下载指令.
 
 **但是我们前面安装的是 535 版本的驱动, 上述指令下载的对应驱动是 545 版本. 因此出现了不匹配的状况.**
 
@@ -131,10 +127,9 @@ sudo apt install g++-11
 
 **对于每一个 C++ 项目**,  
 先在项目根目录创建文件夹 ".vscode",  
-再在 ".vscode" 中创建两个文件:
+再在 ".vscode" 中创建文件:
 
 - c_cpp_properties.json
-- tasks.json
 
 "c_cpp_prperties.json" 主要是用来设置 IntelliSense 检查的:
 
@@ -155,39 +150,6 @@ sudo apt install g++-11
         }
     ],
     "version": 4
-}
-```
-
-"tasks.json" 主要用来设置 vscode 的运行环境; 用指令或者 CMake 来 build 你的项目则可以忽视:
-
-```json
-{
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"type": "cppbuild",
-			"label": "C/C++: g++ build active file",
-			"command": "/usr/bin/g++",
-			"args": [
-				"-fdiagnostics-color=always",
-				"-std=c++23",
-				"-g",
-				"-o",
-				"${workspaceFolder}/bin/main.out",
-				"-I",
-				"${workspaceFolder}/include",
-				"$(find ${workspaceFolder}/src/ -type f -name \"*.cpp\")",
-			],
-			"options": {
-				"cwd": "${fileDirname}"
-			},
-			"problemMatcher": [
-				"$gcc"
-			],
-			"group": "build",
-			"detail": "compiler: /usr/bin/g++", 
-		}
-	]
 }
 ```
 
